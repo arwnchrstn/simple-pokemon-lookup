@@ -1,0 +1,230 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Helvatica', 'Arial', 'open-sans';
+}
+
+:root{
+    --red: rgb(173, 6, 6);
+}
+
+.main-container{
+    padding: 0 10%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(255,255,255,0.6),rgba(255,255,255,0.4)), url('assets/home-bg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.error{
+    position: absolute;
+    display: none;
+    height: auto;
+    width: auto;
+    background-color: var(--red);
+    right: 30px;
+    top: 30px;
+    border-radius: 5px;
+    color: white;
+    align-items: center;
+    padding: 15px 20px;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    opacity: 0;
+    border: 1px solid black;
+}
+#error-mes{
+    font-size: 15px;
+    font-weight: 600;
+    padding: 0;
+    margin: 0;
+}
+.error.active{
+    display: flex;
+    animation: fadeIn 0.5s;
+    opacity: 1;
+}
+
+.loader{
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+}
+.img-loader{
+    width: 5%;
+    height: 5%;
+}
+.img-loader img{
+    width: 100%;
+    animation: spin 1s linear infinite;
+}
+
+header h1, header h1>span{
+    font-family: 'Pokemon Solid', sans-serif;
+    margin: 0;
+    font-size: 60px;
+    padding: 30px 0;
+}
+header h1>span{
+    color: var(--red);
+    font-size: 70px;
+}
+header p{
+    font-size: 18px;
+}
+.main-container header>h1,p{
+    display: block;
+    text-align: center;
+}
+
+.search-bar{
+    width: 50%;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
+.search-bar input{
+    width: 100%;
+    height: 40px;
+    border: none;
+    padding: 5px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.search-bar #poke-search{
+    position: relative;
+}
+.search-bar #poke-search .suggestion-box{
+    position: absolute;
+    width: 100%;
+    background-color: white;
+    border-radius: 0 0 5px 5px;
+    border: 1px rgba(0,0,0,0.2) solid;
+    max-height: 300px;
+    overflow: auto;
+    display: none;
+}
+.search-bar #poke-search .suggestion-box.active{
+    display: block;
+}
+.search-bar #poke-search .suggestion-box li{
+    list-style: none;
+    padding: 10px 20px;
+}
+.search-bar #poke-search .suggestion-box li:hover{
+    cursor: pointer;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+.search-bar input:focus{
+    outline: none;
+}
+.search-bar button{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    background: none;
+    border: none;
+}
+.search-bar button:hover{
+    cursor: pointer;
+}
+.search-load{
+    margin-top: 10px;
+    position: relative;
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.search-load h4{
+    font-family: 'Pokemon solid','sans-serif';
+    font-size: 1.5rem;
+}
+.search-load img{
+    width: 2.5rem;
+    height: 2.5rem;
+    animation: spin 1s linear infinite;
+}
+
+.search-result{
+    width: 70vw;
+    max-width: 60vw;
+    height: max-content;
+    background-color: white;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    display: none;
+}
+.search-result.active{
+    display: block;
+    animation: fadeIn .5s ease-in ;
+}
+.search-result .pokemon-img{
+    display: flex;
+    justify-content: center;
+}
+.search-result .pokemon-img img{
+    margin-top: 30px;
+    min-width: 150px;
+    width: 30%;
+    max-width: 200px;
+    border-radius: 5px;
+    opacity: 0;
+}
+.search-result .pokemon-img img.active{
+    opacity: 1;
+    transition: opacity 1s .3s;
+    animation: rubberBand 1s ease .8s;
+}
+.search-result .pokemon-info #pokemon-name{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    background-color: black;
+    color: white;
+    padding: 5px 0;
+}
+
+@keyframes spin {
+    100%{
+        transform: rotate(1turn);
+    }
+}
+
+@media (max-width:768px) {
+    header h1, header h1>span{
+        font-size: 2.5rem;
+    }
+    header p{
+        font-size: 1rem;
+    }
+    .search-result{
+        max-width: 100vw;
+    }
+    .search-load h4{
+        font-size: 1rem;
+    }
+    .search-load img{
+        width: 2rem;
+        height: 2rem;
+        animation: spin 1s linear infinite;
+    }
+    .search-result .pokemon-info #pokemon-name{
+        font-size: 1rem;
+    }
+    .search-bar{
+        width: 100%;
+    }
+}
