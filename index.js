@@ -3,7 +3,6 @@ const getPokemonNames = async ()=>{
     try{
         const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=1126&offset=0');
         const data = await response.json();
-        console.log(data);
         const results = data.results;
 
         results.forEach(pokemon => {
